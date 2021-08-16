@@ -15,6 +15,8 @@ void Is_Display();
 
 int main()
 {
+    printf("\n ======= Stack Implementation ===========\n");
+
 	pop();
 
 	push(10);
@@ -34,14 +36,13 @@ int main()
 	push(70);
 	push(80);
 	push(90);
-	push(100);
 
 	_getch();
 	system("cls");
 
 	Is_Display();
 
-	printf("\n ======= Thanks For Watching Stack Implementation ===========\n");
+	printf("\n\n ======= Thanks For Watching Stack Implementation ===========\n");
 
 	return 0;
 }
@@ -55,7 +56,7 @@ void pop()
 	}
 	else
 	{
-		printf("\n We Remove the element : %d \n",Stack[TOP]);
+		printf("\n\n We Remove the element : %d \n",Stack[TOP]);
 		TOP--;
 	}
 	return ;
@@ -73,7 +74,7 @@ void push(int Ele)
 	    TOP++;
 		Stack[TOP] = Ele;
 
-		printf("\n Element %d Inserted in Stack Successfully ",Ele);
+		printf("\n Element %d Inserted in Stack Successfully in %d Location ",Ele,TOP + 1);
 	}
 	return ;
 }
@@ -81,7 +82,7 @@ int Is_Stack_Full()
 {
 	int Ret = 0;
 
-	if(TOP == Size)
+	if(TOP+1 == Size)
 	{
 		Ret = 1;
 	}
@@ -100,11 +101,11 @@ int Is_Stack_Empty()
 void Is_Display()
 {
     int i =0;
-	printf("\n ===== The Element Of Stack Is =====");
+	printf("\n ===== The Element Of Stack Is ===== \n ");
 
-	for( i = TOP ; i >=0 ;i--)
+	for( i = TOP; i >= 0 ;i--)
 	{
-		printf("\n\t\t%d",Stack[i]);
+		printf("\n\t\t| %d |",Stack[i]);
 	}
 	return ;
 }
