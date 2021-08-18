@@ -95,7 +95,7 @@ void push(int Ele)
 	else
 	{
 		Stack[++TOP] = Ele;
-		printf("\n Element %d Inserted in Stack Successfully in %d Location ",Ele,TOP + 1);
+		printf("\n Element %d Inserted in Stack Successfully in %d index ",Ele,TOP);
 	}
 	return ;
 }
@@ -154,9 +154,9 @@ void Is_Search_Element()
     }
     else
     {
-         for( i = 0 ; i < TOP ; i++)
+         for( i = 0 ; i <= TOP ; i++)
         {
-            if(Src_Ele == Stack[i])
+            if(Src_Ele == Stack[TOP])
             {
                 break;
             }
@@ -167,7 +167,7 @@ void Is_Search_Element()
         }
         else
         {
-            printf("\n Search Element %d Found In Given Stack And %d Location .", Src_Ele, TOP);
+            printf("\n Search Element %d Found In Given Stack And %d Location .", Src_Ele, TOP + 1);
         }
     }
     return ;
