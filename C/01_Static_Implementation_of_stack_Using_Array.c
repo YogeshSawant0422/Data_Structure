@@ -100,7 +100,7 @@ int Is_Stack_Empty()
 }
 void Is_Display()
 {
-    int i =0;
+   int i =0;
 	printf("\n ===== The Element Of Stack Is ===== \n ");
 
 	for( i = TOP; i >= 0 ;i--)
