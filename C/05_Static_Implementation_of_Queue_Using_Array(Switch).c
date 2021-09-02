@@ -4,7 +4,7 @@
 
 #define size 7
 
-void Is_Enqueue(int Ele);
+void Is_Enqueue(int);
 void Is_Dequeue();
 int Is_Queue_Empty();
 int Is_Queue_Full();
@@ -17,7 +17,7 @@ int Min_Element();
 
 int Queue[size] = {0};
 char ch = '\0';
-int Front = 0 , Rear = 0 , Ret = 0 , i = 0 ;
+int Front = 0 , Rear = 0 ;
 
 int main()
 {
@@ -27,11 +27,11 @@ int main()
     {
         int choice = 0 , Ele = 0;
 
-        printf("\n\n\t ========= WELCOME TO MY APPLICATION ============\n");
+        printf("\n\n========= WELCOME TO MY APPLICATION ============\n");
 
-        printf("\t01.Enqueue Element \n\t02.Dequeue Element \n\t03. Display Element \n\t04. Search Element \n\t05.Count Of Element \n\t06.Peek Element\n\t07.Max Element \n\t08.Min Element \n\t09.Exit");
+        printf("\n\t01.Enqueue Element \n\t02.Dequeue Element \n\t03.Display Element \n\t04.Search Element \n\t05.Count Of Element \n\t06.Peek Element\n\t07.Max Element \n\t08.Min Element \n\t09.Exit");
 
-        printf("\n\n\t =================================================\n");
+        printf("\n\n =================================================\n");
 
         printf("\n Please Enter Your Choice : ");
         scanf("%d",&choice);
@@ -40,7 +40,7 @@ int main()
         {
                     case 1 :
                                 printf("\n Enter A Element For Enqueue : ");
-                                scanf("%d",Ele);
+                                scanf("%d",&Ele);
                                 Is_Enqueue(Ele);
                                 printf("\n Please press any key to continue !!");
                                 _getch();
@@ -65,7 +65,7 @@ int main()
                                system("cls");
                                break;
                     case 5 :
-                                printf( "\n The Count Of Element In Queue Is : %d ",Is_Count_Element());
+                                printf( "\n The Count Of Element In Queue Is : %d \n",Is_Count_Element());
                                 printf("\n Please press any key to continue !!");
                                 _getch();
                                 system("cls");
@@ -77,13 +77,13 @@ int main()
                                 system("cls");
                                 break;
                     case 7 :
-                                printf("\n The maximum element in Queue is %d",Max_Element());
+                                printf("\n The maximum element in Queue is %d .\n",Max_Element());
                                 printf("\n Please press any key to continue !!");
                                 _getch();
                                 system("cls");
                                 break;
                     case 8 :
-                                printf("\n The minimum element in Queue is %d", Min_Element());
+                                printf("\n The minimum element in Queue is %d. \n", Min_Element());
                                 printf("\n Please press any key to continue !!");
                                 _getch();
                                 system("cls");
@@ -93,11 +93,10 @@ int main()
                                 printf("\n Are You Sure You Want To Exit The Application????\n Please Enter The Yes / No , For Do It :  ");
                                 ch = getchar();
 
-                                if(ch == 'Y' || ch == 'y');
+                                if(ch == 'Y' || ch == 'y')
                                 {
                                     goto down;
                                 }
-
                                 fflush(stdin);
                                 printf("\n Please Press any key to continue !!");
                                 _getch();
@@ -114,9 +113,10 @@ int main()
     down :
           printf("\n ================ !!!!! Thanks For Watching The Application !!!! =================\n\n");
 }
-
 void Is_Enqueue(int Ele)
 {
+    int Ret = 0;
+
     Ret = Is_Queue_Full();
 
     if(Ret == 1)
@@ -125,13 +125,16 @@ void Is_Enqueue(int Ele)
     }
     else
     {
-        printf("\n New Element %d Enqueue Successfully .",Ele);
+        Queue[Rear] = Ele;
+        printf("\n New Element %d Enqueue Successfully .\n ",Ele);
         Rear++;
     }
     return ;
 }
 int Is_Queue_Full()
 {
+    int Ret = 0;
+
     if(Rear == size)
     {
         Ret = 1;
@@ -140,15 +143,17 @@ int Is_Queue_Full()
 }
 void  Is_Dequeue()
 {
+    int Ret = 0;
+
     Ret = Is_Queue_Empty();
 
     if(Ret == 1)
     {
-        printf("\n Queue is already Empty , So no element for Dequeue ??");
+        printf("\n Queue is already Empty , So no element for Dequeue ??\n");
     }
     else
     {
-        printf("\n We can remove the element %d . ", Queue[Front]);
+        printf("\n We can remove the element %d . \n", Queue[Front]);
         Queue[Front] = 0;
         Front++;
     }
@@ -156,7 +161,9 @@ return ;
 }
 int Is_Queue_Empty()
 {
-    if(Front == Rear)
+    int Ret = 0;
+
+    if(Rear == Front)
     {
         Ret = 1;
     }
@@ -164,14 +171,14 @@ int Is_Queue_Empty()
 }
 int Is_Count_Element()
 {
-    return Rear +1 ;
+    return Rear - Front ;
 }
 void Is_Search_Element()
 {
-    int Src_Ele = 0 ;
+    int Src_Ele = 0 , i = 0;
 
     printf("\n Enter a element for Searching  in queue : ");
-    scanf("%d",Src_Ele);
+    scanf("%d",&Src_Ele);
 
     for( i = 0 ; i <= Rear ;i++)
     {
@@ -182,19 +189,28 @@ void Is_Search_Element()
     }
     if( i == Rear + 1)
     {
-        printf("\n Given Element %d is not found in queue ..",Src_Ele);
+        printf("\n Given Element %d is not found in queue ..\n",Src_Ele);
     }
     else
     {
-        printf("\n Given Element %d is found in queue at %d location .", Src_Ele,Rear + 1);
+        printf("\n Given Element %d is found in queue at %d location .\n", Src_Ele, i + 1);
     }
     return ;
 }
 void Is_Display()
 {
-    for(i = Front ; i <= Rear ; i++)
+    int i = 0;
+    int Ret = Is_Queue_Empty();
+    if(1 == Ret)
     {
-        printf("\n\n | %d | ",Queue[i]);
+        printf("\n Queue Is Already Empty , No Element For Display !!!\n");
+    }
+    else
+    {
+       for(i = Front ; i < Rear ; i++)
+        {
+            printf("| %d |\t",Queue[i]);
+        }
     }
     return ;
 }
@@ -204,29 +220,29 @@ int Peek_Element()
 }
 int Max_Element()
 {
-    int Max = 0 ;
+    int Max = 0 , i = 0;
 
     for(i = 0 ; i <= Rear ; i++)
     {
-        if(Max > Queue[i])
-        {
-            Max = Queue[i];
-        }
+          if(Queue[i] > Max)
+            {
+                Max = Queue[i];
+            }
     }
     return Max;
 }
 int Min_Element()
 {
-    int Min = 0;
+    int Min = 0 , i = 0;
 
-    for(i = 0 ; i <= Rear ; i++)
+    for(i = Front ; i <= Rear ; i++)
     {
-        if(i == 0  ||  Min > Queue[i] )
+        if(i == 0 ||  Min > Queue[i] )
         {
             Min = Queue[i];
         }
     }
-    return Min;
+ return Min;
 }
 
 
