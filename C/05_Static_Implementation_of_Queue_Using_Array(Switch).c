@@ -53,7 +53,9 @@ int main()
                                 system("cls");
                                 break;
                     case 3 :
+                                printf("\n\n============= Elements Are =========== \n\n");
                                 Is_Display();
+                                printf("\n\n============= ************* =========== \n\n");
                                 printf("\n\n Please press any key to continue !!");
                                 _getch();
                                 system("cls");
@@ -235,7 +237,7 @@ int Min_Element()
 {
     int Min = 0 , i = 0;
 
-    for(i = Front ; i <= Rear ; i++)
+    for(i = Front ; i < Rear ; i++)
     {
         if(i == 0 ||  Min > Queue[i] )
         {
