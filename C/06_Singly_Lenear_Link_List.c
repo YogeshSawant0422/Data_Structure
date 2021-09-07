@@ -101,9 +101,44 @@ void Insert_Last(struct Node **First,int Ele)
     }
     else
     {
-        while()
+        struct Node *Temp = *First;
+
+        while(Temp -> Next != NULL )
+        {
+            Temp = Temp -> Next;
+        }
+
+        Temp -> Next = New ;
     }
     return ;
+}
+void Delete_Last(struct Node **First)
+{
+    struct Node *Temp = *First ;
+
+    if(*First == NULL)
+    {
+        printf("\n\n Given Link List Empty  , Node Is Not Available For Delete..");
+        return 0;
+    }
+
+    if(Temp -> Next == NULL)
+    {
+        *First = NULL ;
+    }
+    else
+    {
+        while((Temp -> Next) -> Next != NULL)
+        {
+            Temp = Temp -> Next ;
+        }
+        printf("\n\n We Remove the element %d .", (Temp -> Next ) -> Data);
+
+        free(Temp -> Next );
+        Temp -> Next = NULL;
+
+        return ;
+    }
 }
 int main()
 {
@@ -124,6 +159,8 @@ int main()
    printf("\n\n ========== Link List Elements Are =========\n\n");
     Display_LL(Head);
     printf("\n\n ========== ******************* =========\n\n");
+
+    Delete_Last(&Head);
     _getch();
 
     Delete_First(&Head);
@@ -138,6 +175,8 @@ int main()
      printf("\n\n ========== Link List Elements Are =========\n\n");
     Display_LL(Head);
      printf("\n\n ========== ********************* =========\n\n");
+
+     Delete_Last(&Head);
     _getch();
 
     Delete_First(&Head);
