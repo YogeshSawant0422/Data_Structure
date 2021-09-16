@@ -95,7 +95,7 @@ void Insert_Last(struct Node **First,int Ele)
     New -> Data = Ele;
     New -> Next = NULL;
 
-    if(New -> Next == NULL)
+    if(*First == NULL)
     {
         *First = New ;
     }
