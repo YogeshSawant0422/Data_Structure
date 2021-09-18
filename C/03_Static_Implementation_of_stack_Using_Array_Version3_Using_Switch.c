@@ -34,133 +34,133 @@ int main()
 
         switch(choice)
         {
-            case 1 :
-                    printf("\n Enter The Element For Push In Stack : ");
-                    scanf("%d",&Ele);
-                    push(Ele);
-                    printf("\n\n Press Any Key To Continue !!!!");
-                    _getch();
-                    system("cls");
-                    break;
-            case 2 :
-                    pop();
-                    printf("\n\n Press Any Key To Continue !!!!");
-                    _getch();
-                    system("cls");
-                    break;
-            case 3 :
-                    Is_Display();
-                    printf("\n\n Press Any Key To Continue !!!!");
-                    _getch();
-                    system("cls");
-                    break;
-            case 4 :
-                    Is_Search_Element();
-                    printf("\n\n Press Any Key To Continue !!!!");
-                    _getch();
-                    system("cls");
-                    break;
-            case 5 :
-                     printf("\n Total Count Of Elements In Stack : %d ",Is_Count_Element());
-                     printf("\n\n Press Any Key To Continue !!!!");
-                    _getch();
-                    system("cls");
-                    break;
-            case 6 :
-                     printf("\n Maximum Element In Stack : %d ",Is_Max());
-                     printf("\n\n Press Any Key To Continue !!!!");
-                    _getch();
-                    system("cls");
-                    break;
-            case 7 :
-                     printf("\n Minimum Element In Stack : %d ",Is_Min());
-                     printf("\n\n Press Any Key To Continue !!!!");
-                    _getch();
-                    system("cls");
-                    break;
-            case 8 :
-                     fflush(stdin);
-                    printf("\n Are You Sure You Want To Exit . \n\n Please Enter Yes Or No :\t");
-                    ch = getchar();
+        case 1 :
+            printf("\n Enter The Element For Push In Stack : ");
+            scanf("%d",&Ele);
+            push(Ele);
+            printf("\n\n Press Any Key To Continue !!!!");
+            _getch();
+            system("cls");
+            break;
+        case 2 :
+            pop();
+            printf("\n\n Press Any Key To Continue !!!!");
+            _getch();
+            system("cls");
+            break;
+        case 3 :
+            Is_Display();
+            printf("\n\n Press Any Key To Continue !!!!");
+            _getch();
+            system("cls");
+            break;
+        case 4 :
+            Is_Search_Element();
+            printf("\n\n Press Any Key To Continue !!!!");
+            _getch();
+            system("cls");
+            break;
+        case 5 :
+            printf("\n Total Count Of Elements In Stack : %d ",Is_Count_Element());
+            printf("\n\n Press Any Key To Continue !!!!");
+            _getch();
+            system("cls");
+            break;
+        case 6 :
+            printf("\n Maximum Element In Stack : %d ",Is_Max());
+            printf("\n\n Press Any Key To Continue !!!!");
+            _getch();
+            system("cls");
+            break;
+        case 7 :
+            printf("\n Minimum Element In Stack : %d ",Is_Min());
+            printf("\n\n Press Any Key To Continue !!!!");
+            _getch();
+            system("cls");
+            break;
+        case 8 :
+            fflush(stdin);
+            printf("\n Are You Sure You Want To Exit . \n\n Please Enter Yes Or No :\t");
+            ch = getchar();
 
-                    if(ch == 'Y' || ch == 'y')
-                    {
-                        goto down;
-                    }
-                    fflush(stdin);
-                    system("cls");
-                    break;
-            default :
-                printf("\n\n Invalid Choice ???? Please Enter Valid Choice...!!");
-                printf("\n\n Press Any Key To Continue !!!!");
-                _getch();
-                system("cls");
-                break;
+            if(ch == 'Y' || ch == 'y')
+            {
+                goto down;
+            }
+            fflush(stdin);
+            system("cls");
+            break;
+        default :
+            printf("\n\n Invalid Choice ???? Please Enter Valid Choice...!!");
+            printf("\n\n Press Any Key To Continue !!!!");
+            _getch();
+            system("cls");
+            break;
         }
     }
-    down :
-	printf("\n\n ======= Thanks For Watching Stack Implementation =========== \n");
-	_getch();
+down :
+    printf("\n\n ======= Thanks For Watching Stack Implementation =========== \n");
+    _getch();
 
-	return 0;
+    return 0;
 }
 void pop()
 {
-	int Ret = Is_Stack_Empty();
+    int Ret = Is_Stack_Empty();
 
-	if(1 == Ret)
-	{
-		printf("\n Stack Is Already Empty  , Please PUSH  The Element \n");
-	}
-	else
-	{
-		printf("\n\n We Remove the element : %d \n",Stack[TOP]);
-		TOP--;
-	}
-	return ;
+    if(1 == Ret)
+    {
+        printf("\n Stack Is Already Empty  , Please PUSH  The Element \n");
+    }
+    else
+    {
+        printf("\n\n We Remove the element : %d \n",Stack[TOP]);
+        TOP--;
+    }
+    return ;
 }
 void push(int Ele)
 {
-	int Ret = Is_Stack_Full();
+    int Ret = Is_Stack_Full();
 
-	if(1 == Ret)
-	{
-		printf("\n\n Stack Is Full , We Cant PUSH the element . \n");
-	}
-	else
-	{
-		Stack[++TOP] = Ele;
-		printf("\n Element %d Inserted in Stack Successfully in %d index ",Ele,TOP);
-	}
-	return ;
+    if(1 == Ret)
+    {
+        printf("\n\n Stack Is Full , We Cant PUSH the element . \n");
+    }
+    else
+    {
+        Stack[++TOP] = Ele;
+        printf("\n Element %d Inserted in Stack Successfully in %d index ",Ele,TOP);
+    }
+    return ;
 }
 int Is_Stack_Full()
 {
-	int Ret = 0;
+    int Ret = 0;
 
-	if(TOP+1 == Size)
-	{
-		Ret = 1;
-	}
-	return Ret;
+    if(TOP+1 == Size)
+    {
+        Ret = 1;
+    }
+    return Ret;
 }
 int Is_Stack_Empty()
 {
-	int Ret = 0;
+    int Ret = 0;
 
-	if(TOP == -1)
-	{
-		Ret = 1;
-	}
-	return Ret;
+    if(TOP == -1)
+    {
+        Ret = 1;
+    }
+    return Ret;
 }
 void Is_Display()
 {
-	printf("\n ===== The Element Of Stack Is ===== \n ");
+    printf("\n ===== The Element Of Stack Is ===== \n ");
 
-	if(TOP >= 0)
+    if(TOP >= 0)
     {
-        for( i = TOP; i >= 0 ;i--)
+        for( i = TOP; i >= 0 ; i--)
         {
             printf("\n\t\t| %d |",Stack[i]);
         }
@@ -169,7 +169,7 @@ void Is_Display()
     {
         printf("\n No Element For Display , First Push The Element .");
     }
-	return ;
+    return ;
 }
 int Is_Count_Element()
 {
@@ -195,7 +195,7 @@ void Is_Search_Element()
         printf("\n\n Enter The Element For Searching In Stack : ");
         scanf("%d",&Src_Ele);
 
-         for( i = 0 ; i <= TOP ; i++)
+        for( i = 0 ; i <= TOP ; i++)
         {
             if(Src_Ele == Stack[i])
             {
@@ -218,7 +218,7 @@ int Is_Max()
 {
     int Max = 0 ;
 
-    for(i = 0 ; i <= TOP ;i++)
+    for(i = 0 ; i <= TOP ; i++)
     {
         if(Stack[i] > Max)
         {
@@ -231,7 +231,7 @@ int Is_Min()
 {
     int Min = 0;
 
-    for(i = 0 ; i <= TOP ;i++)
+    for(i = 0 ; i <= TOP ; i++)
     {
         if( i == 0 || Min > Stack[i])
         {
