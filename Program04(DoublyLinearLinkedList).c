@@ -76,6 +76,131 @@ int Count(PNODE Head)
     }
     return iCnt;
 }
+void DeleteFirst(PPNODE Head)
+{
+    PNODE temp = *Head;
+
+    if(*Head != NULL)
+    {
+        *Head = (*Head) -> next;
+         free(temp);
+         if(*Head != NULL)
+         {
+            (*Head) -> prev = NULL;
+         }
+    }
+}
+void DeleteFirstX(PPNODE Head)
+{
+    if(*Head == NULL)
+    {
+        return ;
+    }
+    else if((*Head) -> next == NULL)
+    {
+        free(*Head);
+        *Head = NULL;
+    }
+    else
+    {
+        *Head = (*Head) -> next;
+        free((*Head) -> prev);
+        (*Head) -> prev = NULL;
+    }
+}
+void deleteLast(PPNODE Head)
+{
+    PNODE temp = *Head;
+
+     if(*Head == NULL)
+    {
+        return ;
+    }
+    else if((*Head) -> next == NULL)
+    {
+        free(*Head);
+        *Head = NULL;
+    }
+    else
+    {
+        while(temp -> next != NULL)
+        {
+            temp = temp -> next;
+        }
+         temp -> prev -> next = NULL;
+         free(temp);
+    }
+}
+
+void InsertAtPos(PPNODE Head , int no , int ipos)
+{
+    int size = Count(*Head);
+    int i = 0;
+    PNODE temp = *Head;
+    PNODE newn = NULL;
+    if((ipos < 1) || (ipos > size +1))
+    {
+        printf("Invalid Position\n");
+        return ;
+    }
+
+    if(ipos == 1)
+    {
+        InsertFirst(Head,no);
+    }
+    else if(ipos == size + 1)
+    {
+        InsertLast(Head,no);
+    }
+    else
+    {
+        newn = (PNODE)malloc(sizeof(NODE));
+
+        newn -> next = NULL;
+        newn -> prev = NULL;
+        newn -> data = no;
+
+        for(i = 1 ; i < ipos - 1 ; i++)
+        {
+            temp = temp -> next;
+        }
+
+        newn -> next = temp -> next;
+        newn ->next->prev = newn ;
+        temp -> next = newn;
+        newn -> prev = temp;
+    }
+}
+void DeleteAtPos(PPNODE Head , int iPos)
+{
+    int size = Count(*Head);
+    int i = 0;
+    PNODE temp = *Head;
+    if((ipos < 1) || (ipos > size))
+    {
+        printf("Invalid Position\n");
+        return ;
+    }
+
+    if(ipos == 1)
+    {
+        DeleteFirst(Head);
+    }
+    else if(ipos == size)
+    {
+        DeleteLast(Head);
+    }
+    else
+    {
+        for(i = 1 ; i < ipos - 1 ; i++)
+        {
+            temp = temp -> next;
+        }
+        temp -> next = temp -> next-> next;
+        free(temp ->next->prev);
+        temp -> next -> prev = temp;
+    }
+}
 int main()
 {
     PNODE first = NULL;
