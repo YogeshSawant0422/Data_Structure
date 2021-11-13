@@ -63,7 +63,7 @@ public:
     }
     void InsertAtPos(int no,int ipos)
     {
-
+        PNODE temp = first;
     }
     void DeleteFirst()
     {
