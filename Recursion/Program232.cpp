@@ -11,7 +11,6 @@ void DisplayI()
         iCnt++;
     }
 }
-
 void DisplayR()
 {
    static int iCnt = 1;
@@ -27,8 +26,6 @@ void DisplayR()
 int main()
 {
     DisplayR();
-
-
     return 0;
 }
 
